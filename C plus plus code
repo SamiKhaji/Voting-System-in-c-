@@ -1,0 +1,193 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+class voting
+{
+	public:
+		int votes1,votes2,votes3,votes4,votes5,votes6,votes7,votes8;
+		int vote;
+		int i,n,age;
+	
+	void vote1(int n,int i)
+	{
+		this->i=i;
+       	cout<<"person :"<<i<<"is entering details"<<endl;
+   		long long int contact_no,aadhar;
+   		cout<<"enter your mobile number NOTE:MObile Number Should be of 10 integers"<<endl;
+   		cin>>contact_no;
+   		cout<<"enter your aadhar number NOTE:ENter the aadhar in XXXXXXXXXXXX format"<<endl;
+   		cin>>aadhar;
+           
+        cout<<"list of political parties in Tamil Nadu"<<endl;
+        cout<<"1.BMK"<<endl;
+        cout<<"2.IAADMK"<<endl;
+        cout<<"3.CMK"<<endl;
+        cout<<"4.DAMK"<<endl;
+        cout<<"5.DKDK"<<endl;
+        cout<<"6.AMKM"<<endl;
+        cout<<"7.NSK"<<endl;
+        cout<<"8.Others"<<endl;
+        cout<<"select your political party"<<endl;
+        cout<<"\n Enter your vote:";
+      cin>>vote;
+      switch(vote)
+      {
+         case 1: votes1++;
+         break;
+
+         case 2:votes2++;
+         break;
+
+         case 3:votes3++;
+         break;
+
+         case 4:votes4++;
+         break;
+
+         case 5:votes5++;
+         break;
+
+         case 6:votes6++;
+         break;
+
+         case 7:votes7++;
+         break;
+
+         case 8:votes8++;
+         break;
+
+         default:
+		 cout<<"enter the correct number";
+       }
+   }
+	
+};
+class childvote:public voting
+{
+	public:
+	childvote()
+	{
+		votes1=0;
+		votes2=0;
+		votes3=0;
+		votes4=0;
+		votes5=0;
+		votes6=0;
+		votes7=0;
+		votes8=0;
+	cout<<"Enter the number of voters"<<endl;
+    cin>>n;	
+    
+	}
+	int getnumber()
+	{
+		return n;
+	}
+	int check(int n,int i)
+	{
+		this->i=i;
+	    int flag=0;
+        {
+        cout<<"person:"<<i<<"  please enter your age"<<endl;
+    	cin>>age;   	
+        if(age>=18)
+        {
+        	flag=1;
+       	cout<<"person:"<<i<<"  you are eligible to vote"<<endl;
+        }
+        else
+        {
+        	flag=0;
+        cout<<"person:"<<i<<"you are not eligible to vote"<<endl;;
+        }
+	}
+	return flag;
+	}
+	
+	
+};
+
+
+int main()
+{
+   
+   
+   childvote v;
+   int number;
+   number=v.getnumber();
+   for(int i=1;i<=number;i++)
+   {
+    int s=v.check(number,i);
+    if(s==0)
+    {
+    	continue;
+	}
+   v.vote1(number,i); 
+   }
+   
+   int totalvotes=v.votes1+v.votes2+v.votes3+v.votes4+v.votes5+v.votes6+v.votes7+v.votes8;  
+   cout<<"number of votes polled are::"<<totalvotes<<endl;
+cout<<"final votes of individuals are as follows:"<<endl;
+cout<<"Number of votes for BMK:"<<v.votes1<<endl;
+cout<<"Number of votes for IAADMK:"<<v.votes2<<endl;
+cout<<"Number of votes for CMK:"<<v.votes3<<endl;
+cout<<"Number of votes for DAMK:"<<v.votes4<<endl;
+cout<<"Number of votes for DKDK:"<<v.votes5<<endl;
+cout<<"Number of votes for AMKM:"<<v.votes6<<endl;
+cout<<"Number of votes for NSK:"<<v.votes7<<endl;
+cout<<"Number of votes for Others:"<<v.votes8<<endl;
+int a=v.votes1;
+int b=v.votes2;
+int c=v.votes3;
+int d=v.votes4;
+int e=v.votes5;
+int f=v.votes6;
+int g=v.votes7;
+int h=v.votes8;
+
+int arr[]={a,b,c,d,e,f,g,h};
+int max;
+    max=arr[0];
+    int length = sizeof(arr)/sizeof(arr[0]);    
+     for(int i = 0;i < length; ++i) 
+	{
+    if(max<arr[i+1])
+    {
+    	max=arr[i+1];
+	}
+  }
+  if(max==a)
+  {
+  	cout<<"BMK WON THE ELECTION";
+  }
+  else if(max==b)
+  {
+  	cout<<"IAADMK WON THE ELECTION";
+  }
+  else if(max==c)
+  {
+  	cout<<"CMK WON THE ELECTION";
+  }
+  else if(max==d)
+  {
+  	cout<<"DAMK WON THE ELECTION";
+  }
+  else if(max==e)
+  {
+  	cout<<"DKDK WON THE ELECTION";
+  }
+  else if(max==f)
+  {
+  	cout<<"AMKKM WON THE ELECTION";
+  }
+  else if(max==g)
+  {
+  	cout<<"NSK WON THE ELECTION";
+  }
+  else
+  {
+  	cout<<"OTHERS WON THE ELECTIONS"<<endl;
+  }
+  
+return 0;
+}
